@@ -1,0 +1,20 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "[Mark Scott] Building Business Applications with Vue.js and MongoDB [ENG, Jul 2018]",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marley-nodejs/Building-Business-Applications-with-Vue.js-and-MongoDB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marley-nodejs/Building-Business-Applications-with-Vue.js-and-MongoDB/issues"
+  },
+  "homepage": "https://github.com/marley-nodejs/Building-Business-Applications-with-Vue.js-and-MongoDB#readme"
+}
