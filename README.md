@@ -68,6 +68,26 @@
 
 ![Application](/img/pic3.png?raw=true)
 
+<br/>
+
+### 36 - Demo - Add Vuetify to the Project
+
+    $ cd /project/client/
+    $ npm install --save vuetify
+
+https://vuetifyjs.com/en/examples/layouts/googleContacts
+
+    $ npm run lint --fix
+    $ npm run dev
+
+<br/>
+
+![Application](/img/pic4.png?raw=true)
+
+<br/>
+
+![Application](/img/pic5.png?raw=true)
+
 ---
 
 **Marley**
