@@ -11,9 +11,7 @@
     # vue --version
     2.9.6
 
-
     $ cd /project/
-    $ npm init -y
 
     $ vue init webpack client
     $ cd client
@@ -22,6 +20,38 @@
 <br/>
 
 ![Application](/img/pic1.png?raw=true)
+
+<br/>
+
+### Developing the api with node and express
+
+    $ cd /project/server/
+    $ npm init -y
+
+    $ npm install --save-dev nodemon
+    $ npm install --save mongoose
+    $ npm install --save eslint
+    $ node ./node_modules/eslint/bin/eslint.js --init
+
+    $ npm install --save express
+    $ npm install --save morgan
+    $ npm install --save body-parser
+
+    $ npm run start
+
+<br/>
+
+![Application](/img/pic2.png?raw=true)
+
+<br/>
+
+    {
+        "isActive": true,
+        "email": "user1@test.com",
+        "first": "User1",
+        "last": "Test",
+        "password": "user111"
+    }
 
 ---
 
