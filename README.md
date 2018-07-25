@@ -23,7 +23,7 @@
 
 <br/>
 
-### Developing the api with node and express
+## Developing the api with node and express
 
     $ cd /project/server/
     $ npm init -y
@@ -52,6 +52,21 @@
         "last": "Test",
         "password": "user111"
     }
+
+<br/>
+
+## UI development with vuejs and vuetify
+
+<br/>
+
+### 34 - Demo - Testing the Baseline Setup
+
+    $ cd /project/client/
+    $ npm run dev
+
+<br/>
+
+![Application](/img/pic3.png?raw=true)
 
 ---
 
