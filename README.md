@@ -88,6 +88,27 @@ https://vuetifyjs.com/en/examples/layouts/googleContacts
 
 ![Application](/img/pic5.png?raw=true)
 
+<br/>
+
+### 38 - Using Vuetify Components
+
+<br/>
+
+![Application](/img/pic6.png?raw=true)
+
+<br/>
+
+login: user1@test.com  
+pass: test111
+
+<br/>
+
+### 39 - Review Vuetified Components
+
+<br/>
+
+![Application](/img/pic7.png?raw=true)
+
 ---
 
 **Marley**

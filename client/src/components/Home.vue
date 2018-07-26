@@ -1,18 +1,18 @@
 <template>
-  <v-app id="inspire">
+  <div>
     <v-navigation-drawer
-      :clipped="$vuetify.breakpoint.lgAndUp"
-      v-model="drawer"
       fixed
+      clipped
       app
+      v-model="drawer"
     >
       <v-list dense>
-        <template v-for="item in items">
+        <template v-for="(item, ndx) in menuItems">
           <v-layout
-            v-if="item.heading"
-            :key="item.heading"
             row
+            v-if="item.heading"
             align-center
+            :key="ndx"
           >
             <v-flex xs6>
               <v-subheader v-if="item.heading">
@@ -23,14 +23,11 @@
               <a href="#!" class="body-2 black--text">EDIT</a>
             </v-flex>
           </v-layout>
-          <v-list-group
-            v-else-if="item.children"
-            v-model="item.model"
-            :key="item.text"
-            :prepend-icon="item.model ? item.icon : item['icon-alt']"
-            append-icon=""
-          >
-            <v-list-tile slot="activator">
+          <v-list-group v-else-if="item.children" v-model="item.model" v-bind:key="ndx" no-action>
+            <v-list-tile slot="item" @click="menuAction">
+              <v-list-tile-action>
+                <v-icon>{{ item.model ? item.icon : item['icon-alt'] }}</v-icon>
+              </v-list-tile-action>
               <v-list-tile-content>
                 <v-list-tile-title>
                   {{ item.text }}
@@ -40,7 +37,7 @@
             <v-list-tile
               v-for="(child, i) in item.children"
               :key="i"
-              @click=""
+              @click="menuAction"
             >
               <v-list-tile-action v-if="child.icon">
                 <v-icon>{{ child.icon }}</v-icon>
@@ -52,7 +49,7 @@
               </v-list-tile-content>
             </v-list-tile>
           </v-list-group>
-          <v-list-tile v-else :key="item.text" @click="">
+          <v-list-tile v-else @click="menuAction" v-bind:key="ndx">
             <v-list-tile-action>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-tile-action>
@@ -66,179 +63,65 @@
       </v-list>
     </v-navigation-drawer>
     <v-toolbar
-      :clipped-left="$vuetify.breakpoint.lgAndUp"
       color="blue darken-3"
       dark
       app
+      clipped-left
       fixed
     >
-      <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
+      <v-toolbar-title :style="$vuetify.breakpoint.smAndUp ? '' : 'min-width: 72px'" class="ml-0 pl-3">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <span class="hidden-sm-and-down">Google Contacts</span>
+        <span class="hidden-xs-only">Globomantics Rewards</span>
       </v-toolbar-title>
-      <v-text-field
-        flat
-        solo-inverted
-        hide-details
-        prepend-inner-icon="search"
-        label="Search"
-        class="hidden-sm-and-down"
-      ></v-text-field>
-      <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>apps</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>notifications</v-icon>
-      </v-btn>
-      <v-btn icon large>
-        <v-avatar size="32px" tile>
-          <img
-            src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
-            alt="Vuetify"
-          >
-        </v-avatar>
-      </v-btn>
+      <!-- <v-text-field
+        light
+        solo
+        prepend-icon="search"
+        placeholder="Search"
+        style="max-width: 500px; min-width: 128px"
+      ></v-text-field> -->
+      <!-- <header-actions></header-actions> -->
     </v-toolbar>
     <v-content>
-      <v-container fluid fill-height>
-        <v-layout justify-center align-center>
-          <v-tooltip right>
-            <v-btn
-              slot="activator"
-              :href="source"
-              icon
-              large
-              target="_blank"
-            >
-              <v-icon large>code</v-icon>
-            </v-btn>
-            <span>Source</span>
-          </v-tooltip>
-          <v-tooltip right>
-            <v-btn slot="activator" icon large href="https://codepen.io/johnjleider/pen/EQOYVV" target="_blank">
-              <v-icon large>mdi-codepen</v-icon>
-            </v-btn>
-            <span>Codepen</span>
-          </v-tooltip>
+      <v-container fluid>
+        <v-layout>
+            <transactions></transactions>
         </v-layout>
       </v-container>
     </v-content>
-    <v-btn
-      fab
-      bottom
-      right
-      color="pink"
-      dark
-      fixed
-      @click.stop="dialog = !dialog"
-    >
-      <v-icon>add</v-icon>
-    </v-btn>
-    <v-dialog v-model="dialog" width="800px">
-      <v-card>
-        <v-card-title
-          class="grey lighten-4 py-4 title"
-        >
-          Create contact
-        </v-card-title>
-        <v-container grid-list-sm class="pa-4">
-          <v-layout row wrap>
-            <v-flex xs12 align-center justify-space-between>
-              <v-layout align-center>
-                <v-avatar size="40px" class="mr-3">
-                  <img
-                    src="//ssl.gstatic.com/s2/oz/images/sge/grey_silhouette.png"
-                    alt=""
-                  >
-                </v-avatar>
-                <v-text-field
-                  placeholder="Name"
-                ></v-text-field>
-              </v-layout>
-            </v-flex>
-            <v-flex xs6>
-              <v-text-field
-                prepend-icon="business"
-                placeholder="Company"
-              ></v-text-field>
-            </v-flex>
-            <v-flex xs6>
-              <v-text-field
-                placeholder="Job title"
-              ></v-text-field>
-            </v-flex>
-            <v-flex xs12>
-              <v-text-field
-                prepend-icon="mail"
-                placeholder="Email"
-              ></v-text-field>
-            </v-flex>
-            <v-flex xs12>
-              <v-text-field
-                type="tel"
-                prepend-icon="phone"
-                placeholder="(000) 000 - 0000"
-                mask="phone"
-              ></v-text-field>
-            </v-flex>
-            <v-flex xs12>
-              <v-text-field
-                prepend-icon="notes"
-                placeholder="Notes"
-              ></v-text-field>
-            </v-flex>
-          </v-layout>
-        </v-container>
-        <v-card-actions>
-          <v-btn flat color="primary">More</v-btn>
-          <v-spacer></v-spacer>
-          <v-btn flat color="primary" @click="dialog = false">Cancel</v-btn>
-          <v-btn flat @click="dialog = false">Save</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-  </v-app>
+    <edit-transaction></edit-transaction>
+  </div>
 </template>
 
 <script>
+import Transactions from './Transactions.vue';
+import EditTransaction from './EditTransactions.vue';
+
 export default {
+  name: 'Home',
+  components: {
+    Transactions,
+    EditTransaction
+  },
   data: () => ({
     dialog: false,
     drawer: null,
-    items: [
-      { icon: 'contacts', text: 'Contacts' },
-      { icon: 'history', text: 'Frequently contacted' },
-      { icon: 'content_copy', text: 'Duplicates' },
-      {
-        icon: 'keyboard_arrow_up',
-        'icon-alt': 'keyboard_arrow_down',
-        text: 'Labels',
-        model: true,
-        children: [{ icon: 'add', text: 'Create label' }]
-      },
-      {
-        icon: 'keyboard_arrow_up',
-        'icon-alt': 'keyboard_arrow_down',
-        text: 'More',
-        model: false,
-        children: [
-          { text: 'Import' },
-          { text: 'Export' },
-          { text: 'Print' },
-          { text: 'Undo changes' },
-          { text: 'Other contacts' }
-        ]
-      },
+    menuItems: [
+      { icon: 'contacts', text: 'Add Transaction' },
+      { icon: 'history', text: 'Current Month' },
+      { icon: 'content_copy', text: 'Notes' },
       { icon: 'settings', text: 'Settings' },
       { icon: 'chat_bubble', text: 'Send feedback' },
-      { icon: 'help', text: 'Help' },
-      { icon: 'phonelink', text: 'App downloads' },
-      { icon: 'keyboard', text: 'Go to the old version' }
+      { icon: 'help', text: 'Help' }
     ]
   }),
-  props: {
-    source: String
+  methods: {
+    menuAction: function() {
+      // TODO
+    },
+    showProfile: function() {
+      console.log('show profile clicked!');
+    }
   }
 };
 </script>
