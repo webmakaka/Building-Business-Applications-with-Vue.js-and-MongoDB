@@ -103,6 +103,11 @@ export default {
     Transactions,
     EditTransaction
   },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
+    }
+  },
   data: () => ({
     dialog: false,
     drawer: null,
@@ -121,6 +126,12 @@ export default {
     },
     showProfile: function() {
       console.log('show profile clicked!');
+    }
+  },
+  mounted: function() {
+    console.log('Is user logged in? ', this.isLoggedIn);
+    if (!this.isLoggedIn) {
+      this.$router.push({ path: '/login' });
     }
   }
 };

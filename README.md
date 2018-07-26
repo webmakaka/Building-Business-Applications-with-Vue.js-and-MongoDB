@@ -109,6 +109,17 @@ pass: test111
 
 ![Application](/img/pic7.png?raw=true)
 
+<br/>
+
+## Manage application state with vuex
+
+    $ cd /project/client/
+    $ npm install --save vuex
+
+<br/>
+
+![Application](/img/pic8.png?raw=true)
+
 ---
 
 **Marley**
