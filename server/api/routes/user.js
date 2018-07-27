@@ -14,7 +14,7 @@ module.exports = router => {
   });
 
   router.get('/user/email/:email', (req, res) => {
-    User.find({ email: req.parsms.email })
+    User.find({ email: req.params.email })
       .exec()
       .then(docs => res.status('200').json(docs))
       .catch(err =>

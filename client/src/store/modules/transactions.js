@@ -1,4 +1,4 @@
-// import Vue from 'vue'
+import Vue from 'vue';
 
 const state = {
   months: [
@@ -31,14 +31,46 @@ const getters = {
 
 const actions = {
   getTransactionsByMonth({ commit, state, rootState }, payload) {
-    commit('transactionsByMonth', []);
-    // Will make API call here...
+    // Make API call... Pass in selected Month and Year + UserId in hearder...
+    // Once transaction data is retrieved... commit the mutation to update state...
+    Vue.axios
+      .get('/transaction/' + state.currentYear + '/' + state.currentMonth, {
+        headers: { userId: rootState.user.userId }
+      })
+      .then(resp => {
+        let data = resp.data;
+        if (data && data.length > 0) {
+          commit('transactionsByMonth', data);
+        }
+      })
+      .catch(err => {
+        console.log(
+          'Darn! There was an error getting transactions by month: ' + err
+        );
+      });
   },
   getPreviousMonthsBalances({ commit, state, rootState }, payload) {
     commit('transactionsByMonth', []);
-    // Will make API call here...
-    commit('balanceCharges', 0);
-    commit('balanceDeposits', 0);
+    // Make API call... Pass in selected Month and Year + UserId in hearder...
+    Vue.axios
+      .get(
+        '/transaction/balance/' + state.currentYear + '/' + state.currentMonth,
+        { headers: { userId: rootState.user.userId } }
+      )
+      .then(resp => {
+        console.log('GET transaction/balance', resp);
+        let data = resp.data;
+        if (data && data.length > 0) {
+          commit('balanceCharges', data[0].charges);
+          commit('balanceDeposits', data[0].deposits);
+        } else {
+          commit('balanceCharges', 0);
+          commit('balanceDeposits', 0);
+        }
+      })
+      .catch(err => {
+        console.log('Darn! There was an error getting balances: ' + err);
+      });
   },
   async gotoMonth({ commit }, increment) {
     commit('gotoMonth', increment);

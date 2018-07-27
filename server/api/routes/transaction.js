@@ -5,6 +5,7 @@ module.exports = router => {
   // Get transactions for given year and month, by userId...
   router.get('/transaction/:year/:month', (req, res) => {
     const userId = req.get('userId');
+    // const userId = '5b5b5df1333e8500dddc37b3';
     const month = req.params.month - 1; // JS months are zero-based
     const year = req.params.year;
     const startDt = new Date(Date.UTC(year, month, 1, 0, 0, 0));
@@ -21,21 +22,28 @@ module.exports = router => {
     Transaction.find(qry)
       .sort({ transactionDate: 1 })
       .exec()
-      .then(docs => res.status(200).json(docs))
-      .catch(err =>
+      .then(docs => {
+        res.status(200).json(docs);
+      })
+      .catch(err => {
         res.status(500).json({
           message: 'Error finding transactions for user',
           error: err
-        })
-      );
+        });
+      });
   });
 
   // Get transactions running balance for a specific user...
   router.get('/transaction/balance/:year/:month', (req, res) => {
     const userId = req.get('userId');
+    // const userId = '5b5b5df1333e8500dddc37b3';
+
     const month = req.params.month - 1; // JS months are zero-based
+
     const year = req.params.year;
+
     const endDt = new Date(Date.UTC(year, month, 1));
+
     const pipeline = [
       {
         $match: {
@@ -58,13 +66,16 @@ module.exports = router => {
 
     Transaction.aggregate(pipeline)
       .exec()
-      .then(docs => res.status(200).json(docs))
-      .catch(err =>
+      .then(docs => {
+        res.status(200).json(docs);
+      })
+
+      .catch(err => {
         res.status(500).json({
           message: 'Error finding transactions for user',
           error: err
-        })
-      );
+        });
+      });
   });
 
   // Create new transaction document...

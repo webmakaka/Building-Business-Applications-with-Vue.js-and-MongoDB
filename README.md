@@ -41,7 +41,7 @@
 
 <br/>
 
-![Application](/img/pic2.png?raw=true)
+![Application](/img/pic2-1.png?raw=true)
 
 <br/>
 
@@ -50,8 +50,82 @@
         "email": "user1@test.com",
         "first": "User1",
         "last": "Test",
-        "password": "user111"
+        "password": "test111"
     }
+
+<br/>
+
+![Application](/img/pic2-2.png?raw=true)
+
+<br/>
+
+Possible data. Need to replace userId:
+
+    [
+        {
+                "userId": "5b5b5df1333e8500dddc37b3",
+                "transactionDate": "2018-05-14T00:00:00.000Z",
+                "transactionType": "Opening Balance",
+                "description": "Equity Line Initial Opening Balance",
+                "charge": "12378.0",
+                "deposit": "0.0",
+                "notes": ""
+            },
+            {
+                "userId": "5b5b5df1333e8500dddc37b3",
+                "transactionDate": "2018-05-15T00:00:00.000Z",
+                "transactionType": "Credit Card",
+                "description": "Amazon - Whey Protien",
+                "charge": "23.45",
+                "deposit": "0.0",
+                "notes": ""
+            },
+            {
+                "userId": "5b5b5df1333e8500dddc37b3",
+                "transactionDate": "2018-05-15T00:00:00.000Z",
+                "transactionType": "Reward",
+                "description": "New account first charge reward deposit",
+                "charge": "0.0",
+                "deposit": "100.0",
+                "notes": ""
+            },
+            {
+                "userId": "5b5b5df1333e8500dddc37b3",
+                "transactionDate": "2018-05-15T00:00:00.000Z",
+                "transactionType": "Credit Card",
+                "description": "Tex-mex lunch",
+                "charge": "12.33",
+                "deposit": "0.0",
+                "notes": ""
+            },
+            {
+                "userId": "5b5b5df1333e8500dddc37b3",
+                "transactionDate": "2018-05-15T00:00:00.000Z",
+                "transactionType": "Deposit",
+                "description": "May 15 Payroll Deposit",
+                "charge": "0.0",
+                "deposit": "1000.0",
+                "notes": ""
+            },
+            {
+                "userId": "5b5b5df1333e8500dddc37b3",
+                "transactionDate": "2018-05-16T00:00:00.000Z",
+                "transactionType": "Credit Card",
+                "description": "Quick Trip - gas and car wash",
+                "charge": "38.12",
+                "deposit": "0.0",
+                "notes": "Gas for the Acura. Got a car wash too."
+            },
+            {
+                "userId": "5b5b5df1333e8500dddc37b3",
+                "transactionDate": "2018-05-16T00:00:00.000Z",
+                "transactionType": "Credit Card",
+                "description": "Optics World - Vortex Scope",
+                "charge": "833.0",
+                "deposit": "0.0",
+                "notes": "My wife is going to kill me when she see this!"
+            }
+        ]
 
 <br/>
 
@@ -111,7 +185,7 @@ pass: test111
 
 <br/>
 
-## Manage application state with vuex
+## 08 - Manage application state with vuex
 
     $ cd /project/client/
     $ npm install --save vuex
@@ -119,6 +193,18 @@ pass: test111
 <br/>
 
 ![Application](/img/pic8.png?raw=true)
+
+<br/>
+
+## 09 - Getting data from the api
+
+    $ cd /project/client/
+    $ npm install --save axios
+
+    $ cd /project/server/
+    $ npm install --save cors
+
+<br/>
 
 ---
 

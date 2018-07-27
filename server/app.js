@@ -3,6 +3,7 @@ const api = require('./api');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 
@@ -14,6 +15,8 @@ app.use(
     extended: false
   })
 );
+
+app.use(cors());
 
 app.use('/api', api);
 app.use(express.static('static'));
