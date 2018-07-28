@@ -77,6 +77,22 @@ const actions = {
   },
   async gotoCurrentMonth({ commit }) {
     commit('gotoCurrentMonth');
+  },
+  saveTransaction({ commit, dispatch, state, rootState }, transaction) {
+    // Add the logged in userId to the transaction payload...
+    transaction.userId = rootState.user.userId;
+
+    Vue.axios
+      .post('/transaction', transaction)
+      .then(resp => {
+        dispatch('getTransactionsByMonth').then(() => {
+          dispatch('getPreviousMonthsBalances');
+        });
+      })
+      .catch(err => {
+        console.log('Error saving transaction');
+        console.log(err);
+      });
   }
 };
 

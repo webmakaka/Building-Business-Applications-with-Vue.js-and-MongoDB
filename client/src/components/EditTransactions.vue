@@ -122,7 +122,8 @@ export default {
   methods: {
     saveTransaction: function() {
       console.log('Saving transaction record:');
-      // TODO: wire up Vuex action
+
+      this.$store.dispatch('saveTransaction', this.transaction);
 
       this.dialog = false;
     },

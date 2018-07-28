@@ -80,7 +80,7 @@
         placeholder="Search"
         style="max-width: 500px; min-width: 128px"
       ></v-text-field> -->
-      <!-- <header-actions></header-actions> -->
+      <header-actions></header-actions>
     </v-toolbar>
     <v-content>
       <v-container fluid>
@@ -96,12 +96,14 @@
 <script>
 import Transactions from './Transactions.vue';
 import EditTransaction from './EditTransactions.vue';
+import HeaderActions from './HeaderActions.vue';
 
 export default {
   name: 'Home',
   components: {
     Transactions,
-    EditTransaction
+    EditTransaction,
+    HeaderActions
   },
   computed: {
     isLoggedIn() {

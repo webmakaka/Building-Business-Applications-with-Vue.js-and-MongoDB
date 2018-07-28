@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vuetify": "^1.1.8",

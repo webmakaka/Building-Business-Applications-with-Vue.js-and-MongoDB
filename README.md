@@ -1,6 +1,126 @@
-# Building Business Applications with Vue.js and MongoDB
+# [Mark Scott] Building Business Applications with Vue.js and MongoDB [ENG, Jul 2018]
 
-[Mark Scott] Building Business Applications with Vue.js and MongoDB [ENG, Jul 2018]
+<br/>
+
+**I dislike this course and I do not recommend it for start study vue for beginners.**
+
+<br/>
+
+**Host**
+
+    $ lsb_release -a
+    No LSB modules are available.
+    Distributor ID:	Ubuntu
+    Description:	Ubuntu 14.04.5 LTS
+    Release:	14.04
+    Codename:	trusty
+
+<br/>
+
+    $ docker -v
+    Docker version 18.06.0-ce, build 0ffa825
+
+<br/>
+
+**Inside container:**
+
+<br/>
+
+    $ node -v
+    v10.7.0
+
+<br/>
+
+    $ npm -v
+    6.2.0
+
+<br/>
+
+**Final project packages**
+
+<br/>
+
+    $ npm list -g --depth=0
+    /usr/local/lib
+    +-- npm@6.2.0
+    `-- vue-cli@2.9.6
+
+<br/>
+
+    $ cd /project/client
+
+    $ npm list --depth=0
+    client@1.0.0 /project/client
+    +-- autoprefixer@7.2.6
+    +-- axios@0.18.0
+    +-- babel-core@6.26.3
+    +-- babel-eslint@8.2.6
+    +-- babel-helper-vue-jsx-merge-props@2.0.3
+    +-- babel-loader@7.1.5
+    +-- babel-plugin-syntax-jsx@6.18.0
+    +-- babel-plugin-transform-runtime@6.23.0
+    +-- babel-plugin-transform-vue-jsx@3.7.0
+    +-- babel-preset-env@1.7.0
+    +-- babel-preset-stage-2@6.24.1
+    +-- bcryptjs@2.4.3
+    +-- chalk@2.4.1
+    +-- copy-webpack-plugin@4.5.2
+    +-- css-loader@0.28.11
+    +-- eslint@4.19.1
+    +-- eslint-config-standard@10.2.1
+    +-- eslint-friendly-formatter@3.0.0
+    +-- eslint-loader@1.9.0
+    +-- eslint-plugin-import@2.13.0
+    +-- eslint-plugin-node@5.2.1
+    +-- eslint-plugin-promise@3.8.0
+    +-- eslint-plugin-standard@3.1.0
+    +-- eslint-plugin-vue@4.7.0
+    +-- extract-text-webpack-plugin@3.0.2
+    +-- file-loader@1.1.11
+    +-- friendly-errors-webpack-plugin@1.7.0
+    +-- html-webpack-plugin@2.30.1
+    +-- node-notifier@5.2.1
+    +-- optimize-css-assets-webpack-plugin@3.2.0
+    +-- ora@1.4.0
+    +-- portfinder@1.0.13
+    +-- postcss-import@11.1.0
+    +-- postcss-loader@2.1.6
+    +-- postcss-url@7.3.2
+    +-- rimraf@2.6.2
+    +-- semver@5.5.0
+    +-- shelljs@0.7.8
+    +-- uglifyjs-webpack-plugin@1.2.7
+    +-- url-loader@0.5.9
+    +-- vue@2.5.16
+    +-- vue-loader@13.7.2
+    +-- vue-router@3.0.1
+    +-- vue-style-loader@3.1.2
+    +-- vue-template-compiler@2.5.16
+    +-- vuetify@1.1.8
+    +-- vuex@3.0.1
+    +-- webpack@3.12.0
+    +-- webpack-bundle-analyzer@2.13.1
+    +-- webpack-dev-server@2.11.2
+    `-- webpack-merge@4.1.3
+
+<br/>
+
+    $ cd /project/server/
+
+    $ npm list --depth=0
+    server@1.0.0 /project/server
+    +-- body-parser@1.18.3
+    +-- cors@2.8.4
+    +-- eslint@5.2.0
+    +-- eslint-config-standard@11.0.0
+    +-- eslint-plugin-import@2.13.0
+    +-- eslint-plugin-node@7.0.1
+    +-- eslint-plugin-promise@3.8.0
+    +-- eslint-plugin-standard@3.1.0
+    +-- express@4.16.3
+    +-- mongoose@5.2.5
+    +-- morgan@1.9.0
+    `-- nodemon@1.18.3
 
 <br/>
 
@@ -205,6 +325,11 @@ pass: test111
     $ npm install --save cors
 
 <br/>
+
+## 10 - Finalizing the demo application
+
+    $ cd /project/client/
+    $ npm install --save bcryptjs
 
 ---
 
